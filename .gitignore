@@ -13,6 +13,8 @@ nbproject/private/
 .classpath
 .project
 .settings
+.idea/*
+sese.iml
 
 #ignore generated .class files
 *.class
