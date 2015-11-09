@@ -1,2 +1,6 @@
-job1:
-  script: "git push heroku master"
+staging:
+  type: deploy
+  script:
+    - dpl --provider=heroku --app=sesews2015 --api-key=72dfcb74-a2e4-40d6-b6ab-ec18c6a2baf1
+  only:
+    - master
