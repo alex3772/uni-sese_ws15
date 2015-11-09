@@ -34,3 +34,6 @@ log
 
 #except this file
 !.gitignore
+
+#expection for ci builds folder
+builds
