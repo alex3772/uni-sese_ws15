@@ -1,6 +1,5 @@
 deploy:
     provider: heroku
     api_key:
-        secure: "72dfcb74-a2e4-40d6-b6ab-ec18c6a2baf1"
 	app:
 	    master: sesews2015
