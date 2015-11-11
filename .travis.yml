@@ -1,9 +1,3 @@
 language: java
 jdk:
 - oraclejdk8
-deploy:
- provider: heroku
- api_key:
-  secure: heroku-key
- app:
-  master: sesews2015
