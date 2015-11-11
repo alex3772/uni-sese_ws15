@@ -2,7 +2,8 @@ language: java
 jdk:
 - openjdk8
 deploy:
-    provider: heroku
-    api_key: heroku-key
-	app:
-	    master: sesews2015
+ provider: heroku
+ api_key:
+  secure: heroku-key
+ app:
+  master: sesews2015
