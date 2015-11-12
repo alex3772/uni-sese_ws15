@@ -1,6 +1,8 @@
 package org.scrum1.sese;
 
+import org.apache.wicket.Application;
 import org.apache.wicket.Page;
+import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.scrum1.sese.view.page.MainPage;
 import org.slf4j.Logger;
@@ -26,4 +28,8 @@ public class WicketWebApplication extends WebApplication {
 		SpringApplication.run(WicketWebApplication.class, args);
 	}
 
+	@Override
+	public RuntimeConfigurationType getConfigurationType() {
+		return super.getConfigurationType().DEPLOYMENT;
+	}
 }
