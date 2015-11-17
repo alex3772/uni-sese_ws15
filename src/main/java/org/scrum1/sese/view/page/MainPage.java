@@ -1,5 +1,6 @@
 package org.scrum1.sese.view.page;
 
+import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.WebPage;
 
 public class MainPage extends WebPage {
