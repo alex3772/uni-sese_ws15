@@ -26,6 +26,7 @@ public class BasicAuthenticationSession extends AuthenticatedWebSession{
         for (GrantedAuthority authority : authentication.getAuthorities()) {
             roles.add(authority.getAuthority());
         }
+        System.out.println("Roles "+roles);
         return roles;
 	}
 
