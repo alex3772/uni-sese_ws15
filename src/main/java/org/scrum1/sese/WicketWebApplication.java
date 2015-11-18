@@ -37,14 +37,14 @@ public class WicketWebApplication extends AuthenticatedWebApplication {
 
 	@Override
 	public RuntimeConfigurationType getConfigurationType() {
-		return super.getConfigurationType().DEPLOYMENT;
+		return RuntimeConfigurationType.DEVELOPMENT;
 	}
-	
+
 	@Override
 	protected void init() {
 		super.init();
 		getComponentInstantiationListeners().add(new SpringComponentInjector(this));
-		
+
 		mountPage("login", LoginPage.class);
 		mountPage("home", MainPage.class);
 		mountPage("secure", SecurePage.class);
