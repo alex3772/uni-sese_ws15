@@ -1,4 +1,4 @@
-package org.scrum.sese.authentication;
+package org.scrum.sese.authentification;
 
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;

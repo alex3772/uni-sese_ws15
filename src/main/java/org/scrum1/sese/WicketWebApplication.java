@@ -9,9 +9,9 @@ import org.apache.wicket.authroles.authorization.strategies.role.annotations.Ann
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
-import org.scrum.sese.authentication.AuthenticatedPage;
-import org.scrum.sese.authentication.BasicAuthenticationSession;
-import org.scrum.sese.authentication.SignInPage;
+import org.scrum.sese.authentification.AuthenticatedPage;
+import org.scrum.sese.authentification.BasicAuthenticationSession;
+import org.scrum.sese.authentification.SignInPage;
 import org.scrum1.sese.view.page.MainPage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

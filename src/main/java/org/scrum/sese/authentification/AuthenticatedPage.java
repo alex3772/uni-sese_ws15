@@ -1,4 +1,4 @@
-package org.scrum.sese.authentication;
+package org.scrum.sese.authentification;
 
 import org.apache.wicket.Application;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
