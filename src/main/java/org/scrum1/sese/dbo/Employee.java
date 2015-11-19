@@ -10,4 +10,16 @@ public interface Employee extends User {
 
 	public void setInitial(String initial);
 
+	public String getSocialSecurityNumber();
+
+	public void setSocialSecurityNumber(String socialSecurityNumber);
+
+	public String getAccountInformation();
+
+	public void setAccountInformation(String accountInformation);
+
+	// TODO Anstellungsverhaeltnis
+
+	// TODO Aufgabengebiet
+
 }

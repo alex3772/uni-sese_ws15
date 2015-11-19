@@ -18,15 +18,15 @@ public interface User {
 
 	public LocalDate getBirthDate();
 
-	public void setBirthDate();
+	public void setBirthDate(LocalDate birthdate);
 
 	public String getPhone();
 
-	public void setPhone();
+	public void setPhone(String phone);
 
 	public String getEmail();
 
-	public void setEmail();
+	public void setEmail(String email);
 
 	public Address getAddress();
 
