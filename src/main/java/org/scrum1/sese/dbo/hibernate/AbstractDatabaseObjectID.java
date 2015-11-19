@@ -25,6 +25,14 @@ public abstract class AbstractDatabaseObjectID implements Serializable, Database
 		return this.id;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.scrum1.sese.dbo.DatabaseObject#isPersisted()
+	 */
+	@Override
+	public boolean isPersisted() {
+		return this.getId() != null;
+	}
+
 	/**
 	 * Returns a hashcode as int of this object. The calculation
 	 * of the hashcode is (hashcode of id) + (hashcode of class).
@@ -48,7 +56,7 @@ public abstract class AbstractDatabaseObjectID implements Serializable, Database
 	@Override
 	public boolean equals(Object obj) {
 		if(this.getClass().equals(obj)) {
-			return getId().equals(((DatabaseObjectID) obj).getId());
+			return this.getId().equals(((DatabaseObjectID) obj).getId());
 		} else return false;
 	}
 
