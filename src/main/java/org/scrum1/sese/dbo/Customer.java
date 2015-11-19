@@ -12,7 +12,7 @@ public interface Customer extends User {
 
 	public String getWeb();
 
-	public void setWen(String web);
+	public void setWeb(String web);
 
 	public String getNote();
 
