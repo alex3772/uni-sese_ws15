@@ -1,5 +1,7 @@
 package org.scrum1.sese.dbo;
 
+import java.util.List;
+
 public interface Customer extends User {
 
 	public String getCompanyName();
@@ -18,6 +20,16 @@ public interface Customer extends User {
 
 	public void setNote(String note);
 
-	// TODO discount, datatype?
+	public Integer getDiscount();
+
+	public void setDiscount(Integer discount);
+
+	public List<Reservation> getReservations();
+
+	public void setReservations(List<Reservation> reservations);
+
+	public void addReservation(Reservation reservation);
+
+	public void removeReservation(Reservation reservation);
 
 }
