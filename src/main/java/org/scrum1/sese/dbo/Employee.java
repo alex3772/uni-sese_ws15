@@ -18,8 +18,10 @@ public interface Employee extends User {
 
 	public void setAccountInformation(String accountInformation);
 
-	// TODO Anstellungsverhaeltnis
+	public Responsibility getResponsibility();
 
-	// TODO Aufgabengebiet
+	public void setResponsibility(Responsibility responsibility);
+
+	// TODO Anstellungsverhaeltnis
 
 }
