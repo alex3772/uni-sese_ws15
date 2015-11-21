@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.scrum1.sese.dbo.DatabaseObjectID;
 
 @MappedSuperclass
@@ -56,9 +57,16 @@ public abstract class AbstractDatabaseObjectID implements Serializable, Database
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if(this.getClass().equals(obj)) {
-			return this.getId().equals(((DatabaseObjectID) obj).getId());
-		} else return false;
+		if(this == obj) {
+			return true;
+		} else if(obj instanceof AbstractDatabaseObjectID) {
+			EqualsBuilder eb = new EqualsBuilder();
+			eb.append(this.getClass(), obj.getClass());
+			eb.append(this.getId(), ((DatabaseObjectID) obj).getId());
+			return eb.isEquals();
+		} else {
+			return false;
+		}
 	}
 
 }

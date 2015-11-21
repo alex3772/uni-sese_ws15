@@ -20,7 +20,7 @@ public class RoleImpl extends AbstractDatabaseObjectID implements Role {
 
 	private static final long serialVersionUID = 160070053639371945L;
 
-	@Column(name = "key", length = 30, nullable = false, unique = true)
+	@Column(name = "role_key", length = 30, nullable = false, unique = true)
 	private String key;
 
 	@Column(name = "name", length = 100, nullable = false)
