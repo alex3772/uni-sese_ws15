@@ -26,7 +26,7 @@ public class RoleImpl extends AbstractDatabaseObjectID implements Role {
 	@Column(name = "name", length = 100, nullable = false)
 	private String name;
 
-	@OneToMany(mappedBy = "role")
+	@OneToMany(mappedBy = "role", targetEntity = EmployeeImpl.class)
 	private List<Employee> employees;
 
 	@Override

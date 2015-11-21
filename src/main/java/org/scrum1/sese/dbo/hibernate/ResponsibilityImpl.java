@@ -26,7 +26,7 @@ public class ResponsibilityImpl extends AbstractDatabaseObjectID implements Resp
 	@Column(name = "description", length = 255, nullable = true)
 	private String description;
 
-	@OneToMany(mappedBy = "responsibility")
+	@OneToMany(mappedBy = "responsibility", targetEntity = EmployeeImpl.class)
 	private List<Employee> employees;
 
 	@Override

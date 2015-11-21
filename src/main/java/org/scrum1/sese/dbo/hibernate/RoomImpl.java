@@ -45,10 +45,10 @@ public class RoomImpl extends AbstractDatabaseObjectID implements Room {
 	@Column(name = "price_dr_one_child", nullable = true)
 	private Double priceDROneChild;
 
-	@OneToMany(mappedBy = "room")
+	@OneToMany(mappedBy = "room", targetEntity = ReservationImpl.class)
 	private List<Reservation> reservations;
 
-	@OneToMany(mappedBy = "room")
+	@OneToMany(mappedBy = "room", targetEntity = DefectImpl.class)
 	private List<Defect> defects;
 
 

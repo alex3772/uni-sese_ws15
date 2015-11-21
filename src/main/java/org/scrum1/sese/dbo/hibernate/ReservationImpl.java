@@ -25,11 +25,11 @@ public class ReservationImpl extends AbstractDatabaseObjectID implements Reserva
 
 	private static final long serialVersionUID = -626427961912829509L;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = CustomerImpl.class)
 	@JoinColumn(name = "customer_id", nullable = false)
 	private Customer customer;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = RoomImpl.class)
 	@JoinColumn(name = "room_id", nullable = false)
 	private Room room;
 
@@ -47,7 +47,7 @@ public class ReservationImpl extends AbstractDatabaseObjectID implements Reserva
 	@Column(name = "price", nullable = false)
 	private Double price;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = InvoiceImpl.class)
 	@JoinColumn(name = "invoice_id", nullable = true)
 	private Invoice invoice;
 

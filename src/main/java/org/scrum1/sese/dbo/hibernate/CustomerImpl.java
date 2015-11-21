@@ -35,7 +35,7 @@ public class CustomerImpl extends AbstractUserImpl implements Customer {
 	@Column(name = "discount", nullable = true)
 	private Integer discount;
 
-	@OneToMany(mappedBy = "customer")
+	@OneToMany(mappedBy = "customer", targetEntity = ReservationImpl.class)
 	private List<Reservation> reservations;
 
 	@Override

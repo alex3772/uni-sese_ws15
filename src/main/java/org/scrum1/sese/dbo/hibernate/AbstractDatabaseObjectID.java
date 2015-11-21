@@ -5,9 +5,11 @@ import java.io.Serializable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 import org.scrum1.sese.dbo.DatabaseObjectID;
 
+@MappedSuperclass
 public abstract class AbstractDatabaseObjectID implements Serializable, DatabaseObjectID {
 
 	private static final long serialVersionUID = -7900862692775004815L;

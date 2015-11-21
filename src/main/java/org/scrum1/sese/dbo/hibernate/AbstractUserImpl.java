@@ -6,13 +6,9 @@ import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToOne;
 
 import org.scrum1.sese.converter.hibernate.LocalDatePersistenceConverter;
-import org.scrum1.sese.dbo.Address;
 import org.scrum1.sese.dbo.Gender;
 import org.scrum1.sese.dbo.User;
 
@@ -41,9 +37,14 @@ public abstract class AbstractUserImpl extends AbstractDatabaseObjectID implemen
 	@Column(name = "email", length = 30, nullable = true)
 	private String email;
 
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "address_id")
-	private Address address;
+	@Column(name = "street", length = 255, nullable = false)
+	private String street;
+
+	@Column(name = "city", length = 100, nullable = false)
+	private String city;
+
+	@Column(name = "zipcode", length = 10, nullable = false)
+	private String zipCode;
 
 	@Override
 	public String getName() {
@@ -106,13 +107,33 @@ public abstract class AbstractUserImpl extends AbstractDatabaseObjectID implemen
 	}
 
 	@Override
-	public Address getAddress() {
-		return this.address;
+	public String getStreet() {
+		return this.street;
 	}
 
 	@Override
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	@Override
+	public String getCity() {
+		return this.city;
+	}
+
+	@Override
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	@Override
+	public String getZipCode() {
+		return this.zipCode;
+	}
+
+	@Override
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
 	}
 
 }

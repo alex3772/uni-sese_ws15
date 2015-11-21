@@ -20,7 +20,7 @@ public class EmployeeImpl extends AbstractUserImpl implements Employee {
 
 	private static final long serialVersionUID = 4741757161073228152L;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = RoleImpl.class)
 	@JoinColumn(name = "role_id", nullable = false)
 	private Role role;
 
@@ -33,7 +33,7 @@ public class EmployeeImpl extends AbstractUserImpl implements Employee {
 	@Column(name = "account_information", length = 35, nullable = true, unique = true)
 	private String accountInformation;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = ResponsibilityImpl.class)
 	@JoinColumn(name = "responsibility_id", nullable = true)
 	private Responsibility responsibility;
 

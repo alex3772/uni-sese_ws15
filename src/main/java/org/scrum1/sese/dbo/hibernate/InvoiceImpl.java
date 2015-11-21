@@ -27,7 +27,7 @@ public class InvoiceImpl extends AbstractDatabaseObjectID implements Invoice {
 	@Convert(converter = LocalDatePersistenceConverter.class)
 	private LocalDate invoiceDate;
 
-	@OneToMany(mappedBy = "invoice")
+	@OneToMany(mappedBy = "invoice", targetEntity = ReservationImpl.class)
 	private List<Reservation> reservations;
 
 	@Override

@@ -22,7 +22,7 @@ public class DefectImpl extends AbstractDatabaseObjectID implements Defect {
 
 	private static final long serialVersionUID = -4267174319079783055L;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, targetEntity = RoomImpl.class)
 	@JoinColumn(name="room_id", nullable = false)
 	private Room room;
 
