@@ -18,7 +18,7 @@ public interface Reservation {
 
 	public LocalDate getCheckOut();
 
-	public void setCheckOut();
+	public void setCheckOut(LocalDate checkOut);
 
 	public Integer getDiscount();
 
@@ -29,5 +29,9 @@ public interface Reservation {
 	public void setPrice(Double price);
 
 	public Double getTotalPrice();
+
+	public Invoice getInvoice();
+
+	public void setInvoice(Invoice invoice);
 
 }

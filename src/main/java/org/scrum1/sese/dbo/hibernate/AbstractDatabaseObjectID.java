@@ -2,10 +2,12 @@ package org.scrum1.sese.dbo.hibernate;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.scrum1.sese.dbo.DatabaseObjectID;
 
 @MappedSuperclass
@@ -14,7 +16,7 @@ public abstract class AbstractDatabaseObjectID implements Serializable, Database
 	private static final long serialVersionUID = -7900862692775004815L;
 
 	@Id
-	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	/* (non-Javadoc)
@@ -55,9 +57,16 @@ public abstract class AbstractDatabaseObjectID implements Serializable, Database
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if(this.getClass().equals(obj)) {
-			return this.getId().equals(((DatabaseObjectID) obj).getId());
-		} else return false;
+		if(this == obj) {
+			return true;
+		} else if(obj instanceof AbstractDatabaseObjectID) {
+			EqualsBuilder eb = new EqualsBuilder();
+			eb.append(this.getClass(), obj.getClass());
+			eb.append(this.getId(), ((DatabaseObjectID) obj).getId());
+			return eb.isEquals();
+		} else {
+			return false;
+		}
 	}
 
 }
