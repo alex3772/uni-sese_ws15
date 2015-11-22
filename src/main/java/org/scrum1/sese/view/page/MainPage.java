@@ -1,9 +1,7 @@
 package org.scrum1.sese.view.page;
 
-import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.request.resource.CssResourceReference;
 
 public class MainPage extends WebPage {
 
@@ -15,5 +13,5 @@ public class MainPage extends WebPage {
 		/*response.render(CssHeaderItem.forReference(new CssResourceReference(
 				MainPage.class, "bootstrap.css")));*/
 	}
-	
+
 }

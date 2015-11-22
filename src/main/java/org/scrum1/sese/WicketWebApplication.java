@@ -1,6 +1,5 @@
 package org.scrum1.sese;
 
-import org.apache.wicket.Application;
 import org.apache.wicket.Page;
 import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.protocol.http.WebApplication;
@@ -30,6 +29,6 @@ public class WicketWebApplication extends WebApplication {
 
 	@Override
 	public RuntimeConfigurationType getConfigurationType() {
-		return super.getConfigurationType().DEPLOYMENT;
+		return RuntimeConfigurationType.DEVELOPMENT;
 	}
 }
