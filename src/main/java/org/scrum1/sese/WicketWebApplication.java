@@ -10,13 +10,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
+/**
+ * Main class for starting the application.
+ * In eclipse just open this file and click on run.
+ */
 @EnableAutoConfiguration
 @ComponentScan
 public class WicketWebApplication extends WebApplication {
 
 	// TODO source: https://github.com/Pentadrago/spring-boot-example-wicket
-	
-	// TEST git shit
 
 	private final static Logger logger = LoggerFactory.getLogger(WicketWebApplication.class);
 
