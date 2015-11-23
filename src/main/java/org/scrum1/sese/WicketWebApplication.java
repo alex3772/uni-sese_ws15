@@ -15,6 +15,8 @@ import org.springframework.context.annotation.ComponentScan;
 public class WicketWebApplication extends WebApplication {
 
 	// TODO source: https://github.com/Pentadrago/spring-boot-example-wicket
+	
+	// TEST git shit
 
 	private final static Logger logger = LoggerFactory.getLogger(WicketWebApplication.class);
 
