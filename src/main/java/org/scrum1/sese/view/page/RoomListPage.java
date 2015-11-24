@@ -20,20 +20,22 @@ public class RoomListPage extends BasePage{
 	@SpringBean
 	private RoomService roomService;
 
-	public RoomListPage() {
-		this(null);
-	}
-	
 	public RoomListPage(final PageParameters params) {
-		this.roomService = new RoomServiceImpl();
-		
-		System.out.println("SERVICE" + this.roomService);
-		
+
 		if (!params.get("username").isEmpty()) {
 			System.out.println("Contains username " + params.get("username"));
 		} else {
 			System.out.println("No username set");
 		}
+		
+		addSampleRooms();
+	}
+	
+	public RoomListPage() {
+		this.roomService = new RoomServiceImpl();
+		
+		System.out.println("SERVICE" + this.roomService);
+		
 		
 		try {
 			System.out.println("Inside try");
@@ -47,6 +49,10 @@ public class RoomListPage extends BasePage{
 			System.out.println("ERROR " + e);
 		}
 		
+		addSampleRooms();
+	}
+
+	private void addSampleRooms() {
 		List<RoomImpl> rooms = new LinkedList<RoomImpl>();
 		
 		RoomImpl r1 = new RoomImpl();
@@ -71,7 +77,7 @@ public class RoomListPage extends BasePage{
 			}
 		};
 		
-		this.add(roomsListView);
+		this.add(roomsListView);		
 	}
 	
 }
