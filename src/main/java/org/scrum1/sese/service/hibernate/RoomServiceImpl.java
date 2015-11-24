@@ -8,6 +8,7 @@ import org.scrum1.sese.dbo.hibernate.RoomImpl;
 import org.scrum1.sese.repository.RoomRepository;
 import org.scrum1.sese.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 public class RoomServiceImpl implements RoomService {
 
@@ -22,6 +23,7 @@ public class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Room> findAll() {
 		return toList(roomRepository.findAll());
 	}
