@@ -16,10 +16,6 @@ public class BasePage extends WebPage{
 	BasePage(IModel model) {
 		super(model);
 		this.add(new NavigationPanel("mainNav"));
-		
-		
-		Date now = new Date();
-		this.add(new Label("datetime", now.toString()));
 	}
 	
 	

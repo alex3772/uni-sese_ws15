@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.scrum1.sese.dbo.Room;
 import org.scrum1.sese.dbo.hibernate.RoomImpl;
@@ -20,9 +21,19 @@ public class RoomListPage extends BasePage{
 	private RoomService roomService;
 
 	public RoomListPage() {
+		this(null);
+	}
+	
+	public RoomListPage(final PageParameters params) {
 		this.roomService = new RoomServiceImpl();
 		
 		System.out.println("SERVICE" + this.roomService);
+		
+		if (!params.get("username").isEmpty()) {
+			System.out.println("Contains username " + params.get("username"));
+		} else {
+			System.out.println("No username set");
+		}
 		
 		try {
 			System.out.println("Inside try");

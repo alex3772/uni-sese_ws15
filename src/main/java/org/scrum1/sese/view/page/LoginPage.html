@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Login</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+		<style type="text/css">
+			.loginTitle {
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div wicket:id="mainNav">
+    	</div>
+    	
+    	<div class="container">
+    		<h1 class="text-center loginTitle">Login</h1>
+	    	<form action="#" wicket:id="login_form" class="form-horizontal col-lg-4 col-lg-offset-4">
+	    		<div class="form-group">
+	    			<label for="loginUsername" class="col-sm-3 col-lg-3 control-label">Username:</label>
+	    			<div class="col-sm-9 col-lg-9">
+	    				<input wicket:id="username" type="text" required autofocus id="loginUsername" placeholder="Username"  class="form-control"/>
+	    			</div>
+	    		</div>
+	    		<div class="form-group">
+	    			<label for="loginPassword"  class="col-sm-3 col-lg-3 control-label">Password:</label>
+	    			<div class="col-sm-9 col-lg-9">
+	    				<input wicket:id="password" type="password" id="loginPassword" placeholder="Password"  class="form-control"/>
+	    			</div>
+	    		</div>
+		      	<input value="Login" name="login" type="submit" class="btn pull-right"/>
+		    </form>
+	    </div>    	
+    	
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+	</body>
+</html>

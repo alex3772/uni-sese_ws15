@@ -2,6 +2,9 @@ package org.scrum1.sese.view.page.panels;
 
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.scrum1.sese.dbo.Customer;
+import org.scrum1.sese.dbo.hibernate.CustomerImpl;
+import org.scrum1.sese.view.page.LoginPage;
 import org.scrum1.sese.view.page.MainPage;
 import org.scrum1.sese.view.page.RoomListPage;
 
@@ -26,6 +29,15 @@ public class NavigationPanel extends Panel{
 			}
 		};
 		this.add(roomsListLink);
+		
+		Link loginLink = new Link<String>("login") {
+			@Override
+			public void onClick() {
+				CustomerImpl customer = new CustomerImpl();
+				this.setResponsePage(new LoginPage(customer));
+			}
+		};
+		this.add(loginLink);
 	}
 	
 }

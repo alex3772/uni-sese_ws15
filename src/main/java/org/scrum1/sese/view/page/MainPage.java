@@ -5,6 +5,7 @@ import java.util.Date;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.scrum1.sese.dbo.Customer;
 import org.scrum1.sese.dbo.hibernate.CustomerImpl;
@@ -15,10 +16,13 @@ public class MainPage extends BasePage {
 	private static final long serialVersionUID = 4809421004007068373L;
 
 	public MainPage() {
-		/* Add needed Links 
-		RoomListPageLink roomListLink = new RoomListPageLink("list_rooms");
-		this.add(roomListLink);*/
-
+		Link roomsListLink = new Link<String>("list_rooms") {
+			@Override
+			public void onClick() {
+				this.setResponsePage(new RoomListPage());
+			}
+		};
+		this.add(roomsListLink);
 	}
 	
 	@Override
