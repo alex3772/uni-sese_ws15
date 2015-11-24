@@ -6,10 +6,6 @@ public interface Employee extends User {
 
 	public void setRole(Role role);
 
-	public String getInitial();
-
-	public void setInitial(String initial);
-
 	public String getSocialSecurityNumber();
 
 	public void setSocialSecurityNumber(String socialSecurityNumber);

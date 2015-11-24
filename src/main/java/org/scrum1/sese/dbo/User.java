@@ -16,6 +16,14 @@ public interface User {
 
 	public void setGender(Gender gender);
 
+	public String getInitial();
+
+	public void setInitial(String initial);
+
+	public String getPassword();
+
+	public void setPassword(String password);
+
 	public LocalDate getBirthDate();
 
 	public void setBirthDate(LocalDate birthdate);

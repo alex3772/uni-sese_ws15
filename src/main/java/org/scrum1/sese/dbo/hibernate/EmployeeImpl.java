@@ -24,9 +24,6 @@ public class EmployeeImpl extends AbstractUserImpl implements Employee {
 	@JoinColumn(name = "role_id", nullable = false)
 	private Role role;
 
-	@Column(name = "initial", length = 10, nullable = false, unique = true)
-	private String initial;
-
 	@Column(name = "social_security_number", length = 30, nullable = false, unique = true)
 	private String socialSecurityNumber;
 
@@ -45,16 +42,6 @@ public class EmployeeImpl extends AbstractUserImpl implements Employee {
 	@Override
 	public void setRole(Role role) {
 		this.role = role;
-	}
-
-	@Override
-	public String getInitial() {
-		return this.initial;
-	}
-
-	@Override
-	public void setInitial(String initial) {
-		this.initial = initial;
 	}
 
 	@Override
