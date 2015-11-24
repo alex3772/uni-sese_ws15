@@ -35,4 +35,9 @@ public class WicketWebApplication extends WebApplication {
 	public RuntimeConfigurationType getConfigurationType() {
 		return RuntimeConfigurationType.DEVELOPMENT;
 	}
+	
+	@Override
+	protected void init() {
+		super.init();
+	}
 }

@@ -1,5 +1,5 @@
 spring.jpa.hibernate.ddl-auto=create
 spring.jpa.database=DERBY
 spring.datasource.url=jdbc:derby:memory:hotel;create=true
-spring.datasource.username=bla
-spring.datasource.password=sa
+spring.datasource.username=
+spring.datasource.password=
