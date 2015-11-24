@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RoleServiceImpl implements RoleService {
 
-	private final static Logger logger = LoggerFactory.getLogger(RoleServiceImpl.class);
+	//private final static Logger logger = LoggerFactory.getLogger(RoleServiceImpl.class);
 
 	@Autowired private MessageSource messageSource;
 	@Autowired private RoleRepository roleRepository;

@@ -17,7 +17,7 @@ public class RoomServiceImpl implements RoomService {
 	private List<Room> toList(Iterable<RoomImpl> iterable) {
 		List<Room> rooms = new ArrayList<>();
 		for(Room room : iterable) {
-			rooms.add(room);
+			rooms.add((RoomImpl) room);
 		}
 		return rooms;
 	}

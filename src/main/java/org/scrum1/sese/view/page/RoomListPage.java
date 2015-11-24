@@ -6,21 +6,34 @@ import java.util.List;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.scrum1.sese.dbo.Room;
 import org.scrum1.sese.dbo.hibernate.RoomImpl;
 import org.scrum1.sese.repository.RoomRepository;
+import org.scrum1.sese.service.RoomService;
+import org.scrum1.sese.service.hibernate.RoomServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class RoomListPage extends BasePage{
 	
-	@Autowired
-	private RoomRepository roomsList;
+	@SpringBean
+	private RoomService roomService;
 
 	public RoomListPage() {
-		//this.roomsList = new RoomRempoImpl();
+		this.roomService = new RoomServiceImpl();
+		
+		System.out.println("SERVICE" + this.roomService);
+		
 		try {
-			List<RoomImpl> testList = (List<RoomImpl>) roomsList.findAll();//(List<RoomImpl>) this.roomsList.findAll();	
+			System.out.println("Inside try");
+			List<Room> testList = this.roomService.findAll();
+			if(testList.isEmpty()) {
+				System.out.println("List is empty");
+			} else {
+				System.out.println("Not empty");
+			}
 		} catch (Exception e) {
-			System.out.println("ERROR: " + e.getMessage());
+			System.out.println("ERROR " + e);
 		}
 		
 		List<RoomImpl> rooms = new LinkedList<RoomImpl>();
