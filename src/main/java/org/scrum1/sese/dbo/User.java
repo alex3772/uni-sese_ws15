@@ -16,9 +16,9 @@ public interface User {
 
 	public void setGender(Gender gender);
 
-	public String getInitial();
+	public String getUsername();
 
-	public void setInitial(String initial);
+	public void setUsername(String username);
 
 	public String getPassword();
 

@@ -27,8 +27,8 @@ public abstract class AbstractUserImpl extends AbstractDatabaseObjectID implemen
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 
-	@Column(name = "initial", length = 10, nullable = false, unique = true)
-	private String initial;
+	@Column(name = "username", length = 10, nullable = false, unique = true)
+	private String username;
 
 	@Column(name = "password", length = 64, nullable = true)
 	private String password;
@@ -83,13 +83,13 @@ public abstract class AbstractUserImpl extends AbstractDatabaseObjectID implemen
 	}
 
 	@Override
-	public String getInitial() {
-		return this.initial;
+	public String getUsername() {
+		return this.username;
 	}
 
 	@Override
-	public void setInitial(String initial) {
-		this.initial = initial;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	@Override
