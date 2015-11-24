@@ -10,6 +10,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
+/**
+ * Main class for starting the application.
+ * In eclipse just open this file and click on run.
+ */
 @EnableAutoConfiguration
 @ComponentScan
 public class WicketWebApplication extends WebApplication {
