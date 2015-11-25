@@ -7,10 +7,16 @@ import org.scrum1.sese.dbo.Room;
 import org.scrum1.sese.dbo.hibernate.RoomImpl;
 import org.scrum1.sese.repository.RoomRepository;
 import org.scrum1.sese.service.RoomService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class RoomServiceImpl implements RoomService {
+
+	private static final Logger logger = LoggerFactory.getLogger(RoomServiceImpl.class);
 
 	@Autowired private RoomRepository roomRepository;
 
