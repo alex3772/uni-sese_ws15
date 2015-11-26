@@ -35,11 +35,11 @@ public class ReservationImpl extends AbstractDatabaseObjectID implements Reserva
 
 	@Column(name = "checkin", nullable = false)
 	@Convert(converter = LocalDatePersistenceConverter.class)
-	private LocalDate checkIn;
+	private LocalDate checkin;
 
 	@Column(name = "checkout", nullable = false)
 	@Convert(converter = LocalDatePersistenceConverter.class)
-	private LocalDate checkOut;
+	private LocalDate checkout;
 
 	@Column(name = "discount", nullable = true)
 	private Integer discount;
@@ -72,23 +72,23 @@ public class ReservationImpl extends AbstractDatabaseObjectID implements Reserva
 	}
 
 	@Override
-	public LocalDate getCheckIn() {
-		return this.checkIn;
+	public LocalDate getCheckin() {
+		return this.checkin;
 	}
 
 	@Override
-	public void setCheckIn(LocalDate checkIn) {
-		this.checkIn = checkIn;
+	public void setCheckin(LocalDate checkin) {
+		this.checkin = checkin;
 	}
 
 	@Override
-	public LocalDate getCheckOut() {
-		return this.checkOut;
+	public LocalDate getCheckout() {
+		return this.checkout;
 	}
 
 	@Override
-	public void setCheckOut(LocalDate checkOut) {
-		this.checkOut = checkOut;
+	public void setCheckout(LocalDate checkout) {
+		this.checkout = checkout;
 	}
 
 	@Override

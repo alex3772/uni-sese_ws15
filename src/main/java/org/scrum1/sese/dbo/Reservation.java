@@ -12,13 +12,13 @@ public interface Reservation {
 
 	public void setRoom(Room room);
 
-	public LocalDate getCheckIn();
+	public LocalDate getCheckin();
 
-	public void setCheckIn(LocalDate checkIn);
+	public void setCheckin(LocalDate checkin);
 
-	public LocalDate getCheckOut();
+	public LocalDate getCheckout();
 
-	public void setCheckOut(LocalDate checkOut);
+	public void setCheckout(LocalDate checkout);
 
 	public Integer getDiscount();
 
