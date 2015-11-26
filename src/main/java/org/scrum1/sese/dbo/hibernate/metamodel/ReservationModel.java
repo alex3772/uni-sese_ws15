@@ -16,8 +16,8 @@ public class ReservationModel {
 	public static volatile SingularAttribute<ReservationImpl, Long> id;
 	public static volatile SingularAttribute<ReservationImpl, Customer> customer;
 	public static volatile SingularAttribute<ReservationImpl, Room> room;
-	public static volatile SingularAttribute<ReservationImpl, LocalDate> checkIn;
-	public static volatile SingularAttribute<ReservationImpl, LocalDate> checkOut;
+	public static volatile SingularAttribute<ReservationImpl, LocalDate> checkin;
+	public static volatile SingularAttribute<ReservationImpl, LocalDate> checkout;
 	public static volatile SingularAttribute<ReservationImpl, Integer> discount;
 	public static volatile SingularAttribute<ReservationImpl, Invoice> invoice;
 
