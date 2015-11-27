@@ -48,8 +48,6 @@ public class RoomServiceImpl implements RoomService {
 		}
 	}
 
-
-
 	@Override
 	@Transactional(readOnly = true)
 	public List<Room> findAll() {
