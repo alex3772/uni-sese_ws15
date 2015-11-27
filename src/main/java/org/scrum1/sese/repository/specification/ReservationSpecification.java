@@ -10,7 +10,7 @@ import javax.persistence.criteria.Root;
 import org.scrum1.sese.dbo.Customer;
 import org.scrum1.sese.dbo.Room;
 import org.scrum1.sese.dbo.hibernate.ReservationImpl;
-import org.scrum1.sese.dbo.hibernate.metamodel.ReservationModel;
+import org.scrum1.sese.dbo.hibernate.ReservationImpl_;
 import org.springframework.data.jpa.domain.Specification;
 
 public class ReservationSpecification implements Specification<ReservationImpl> {
@@ -31,11 +31,11 @@ public class ReservationSpecification implements Specification<ReservationImpl> 
 	public Predicate toPredicate(Root<ReservationImpl> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
 		Predicate predicate = null;
 		if(customer != null) {
-			predicate = cb.equal(root.get(ReservationModel.customer), customer);
+			predicate = cb.equal(root.get(ReservationImpl_.customer), customer);
 		}
 
 		if(room != null) {
-			Predicate roomPredicate = cb.equal(root.get(ReservationModel.room), room);
+			Predicate roomPredicate = cb.equal(root.get(ReservationImpl_.room), room);
 			if(predicate == null) {
 				predicate = roomPredicate;
 			} else {
@@ -44,7 +44,7 @@ public class ReservationSpecification implements Specification<ReservationImpl> 
 		}
 
 		if(checkin != null) {
-			Predicate checkinPredicate = cb.equal(root.get(ReservationModel.checkin), checkin);
+			Predicate checkinPredicate = cb.equal(root.get(ReservationImpl_.checkin), checkin);
 			if(predicate == null) {
 				predicate = checkinPredicate;
 			} else {
@@ -53,7 +53,7 @@ public class ReservationSpecification implements Specification<ReservationImpl> 
 		}
 
 		if(checkout != null) {
-			Predicate checkoutPredicate = cb.equal(root.get(ReservationModel.checkout), checkout);
+			Predicate checkoutPredicate = cb.equal(root.get(ReservationImpl_.checkout), checkout);
 			if(predicate == null) {
 				predicate = checkoutPredicate;
 			} else {
