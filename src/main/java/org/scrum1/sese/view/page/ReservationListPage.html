@@ -2,43 +2,36 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Zimmer</title>
+		<title>Reservierungen</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 	</head>
-	
 	<body>
-	
-		<div wicket:id="mainNav">
-    	</div>
+		<div wicket:id="mainNav"></div>
 	
 		<div class="container">
 			<div class="page-header">
-			  <h2>Liste der Zimmer</h2>
+			  <h2>Reservierungen</h2>
 			</div>
 			
 			
 			<table class="table table-hover">
 				<tr>
-					<th>
-						Name
-					</th>
-					<th>
-						maximale PersonenAnzahl
-					</th>
+					<th>Zimmer</th>
+					<th>Kundenname</th>
+					<th>Preis</th>
+					<th>Rabatt</th>
 				</tr>
-				<tr wicket:id="rooms_list">
-					<td wicket:id="name">
-					</td>
-					<td wicket:id="maxPersons">
-					</td>
+				<tr wicket:id="reservations_list">
+					<td wicket:id="roomName"></td>
+					<td wicket:id="customerName"></td>
+					<td wicket:id="price"></td>
+					<td wicket:id="discount"></td>
 				</tr>
 			
 			</table>
 			
 		</div>
-
 	</body>
-	
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 </html>

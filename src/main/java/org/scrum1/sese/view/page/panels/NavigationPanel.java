@@ -7,6 +7,7 @@ import org.scrum1.sese.dbo.hibernate.CustomerImpl;
 import org.scrum1.sese.view.page.LoginPage;
 import org.scrum1.sese.view.page.MainPage;
 import org.scrum1.sese.view.page.RegisterPage;
+import org.scrum1.sese.view.page.ReservationListPage;
 import org.scrum1.sese.view.page.RoomListPage;
 
 public class NavigationPanel extends Panel{
@@ -30,6 +31,14 @@ public class NavigationPanel extends Panel{
 			}
 		};
 		this.add(roomsListLink);
+		
+		Link reservationListLink = new Link<String>("list_reservations") {
+			@Override
+			public void onClick() {
+				this.setResponsePage(new ReservationListPage());
+			}
+		};
+		this.add(reservationListLink);
 		
 		Link loginLink = new Link<String>("login") {
 			@Override
