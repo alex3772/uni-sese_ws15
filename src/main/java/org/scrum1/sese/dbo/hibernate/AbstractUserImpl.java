@@ -30,7 +30,7 @@ public abstract class AbstractUserImpl extends AbstractDatabaseObjectID implemen
 	@Column(name = "username", length = 10, nullable = false, unique = true)
 	private String username;
 
-	@Column(name = "password", length = 64, nullable = true)
+	@Column(name = "password", length = 64, nullable = false)
 	private String password;
 
 	@Column(name = "birthdate", nullable = true)
@@ -51,6 +51,21 @@ public abstract class AbstractUserImpl extends AbstractDatabaseObjectID implemen
 
 	@Column(name = "zipcode", length = 10, nullable = false)
 	private String zipCode;
+
+	public AbstractUserImpl() {
+	}
+
+	public AbstractUserImpl(String name, String surname, String password,
+			Gender gender, String username, String street, String city, String zipCode) {
+		this.name = name;
+		this.surname = surname;
+		this.password = password;
+		this.gender = gender;
+		this.username = username;
+		this.street = street;
+		this.city = city;
+		this.zipCode = zipCode;
+	}
 
 	@Override
 	public String getName() {

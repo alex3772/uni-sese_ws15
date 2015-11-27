@@ -51,6 +51,13 @@ public class RoomImpl extends AbstractDatabaseObjectID implements Room {
 	@OneToMany(mappedBy = "room", targetEntity = DefectImpl.class)
 	private List<Defect> defects;
 
+	public RoomImpl() {
+	}
+
+	public RoomImpl(String name, int maxpersons) {
+		this.name = name;
+		this.maxPersons = maxpersons;
+	}
 
 	@Override
 	public String getName() {
@@ -74,7 +81,7 @@ public class RoomImpl extends AbstractDatabaseObjectID implements Room {
 
 	@Override
 	public Double getPriceSR() {
-		return this.getPriceSR();
+		return this.priceSR;
 	}
 
 	@Override
@@ -84,7 +91,7 @@ public class RoomImpl extends AbstractDatabaseObjectID implements Room {
 
 	@Override
 	public Double getPriceDR() {
-		return this.getPriceDR();
+		return this.priceDR;
 	}
 
 	@Override

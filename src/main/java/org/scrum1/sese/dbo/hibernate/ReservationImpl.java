@@ -51,6 +51,19 @@ public class ReservationImpl extends AbstractDatabaseObjectID implements Reserva
 	@JoinColumn(name = "invoice_id", nullable = true)
 	private Invoice invoice;
 
+	public ReservationImpl() {
+	}
+
+	public ReservationImpl(Customer customer, Room room, LocalDate checkin,
+			LocalDate checkout, Integer discount, Double price) {
+		this.customer = customer;
+		this.room = room;
+		this.checkin = checkin;
+		this.checkout = checkout;
+		this.discount = discount;
+		this.price = price;
+	}
+
 	@Override
 	public Customer getCustomer() {
 		return this.customer;

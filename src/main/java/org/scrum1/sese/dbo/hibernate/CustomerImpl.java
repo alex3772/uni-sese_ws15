@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.scrum1.sese.dbo.Customer;
+import org.scrum1.sese.dbo.Gender;
 import org.scrum1.sese.dbo.Reservation;
 
 @Entity(name = "customer")
@@ -37,6 +38,15 @@ public class CustomerImpl extends AbstractUserImpl implements Customer {
 
 	@OneToMany(mappedBy = "customer", targetEntity = ReservationImpl.class)
 	private List<Reservation> reservations;
+
+	public CustomerImpl() {
+		super();
+	}
+
+	public CustomerImpl(String name, String surname, String password, Gender gender,
+			String username, String steet, String city,	String zipCode) {
+		super(name, surname, password, gender, username, steet, city, zipCode);
+	}
 
 	@Override
 	public String getCompanyName() {
