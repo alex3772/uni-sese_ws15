@@ -13,7 +13,9 @@ import org.scrum1.sese.dbo.hibernate.ReservationImpl;
 import org.scrum1.sese.dbo.hibernate.RoomImpl;
 import org.scrum1.sese.repository.ReservationRepository;
 import org.scrum1.sese.repository.specification.ReservationSpecification;
+import org.scrum1.sese.service.CustomerService;
 import org.scrum1.sese.service.ReservationService;
+import org.scrum1.sese.service.RoomService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,9 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Autowired private MessageSource messageSource;
 	@Autowired private ReservationRepository reservationRepository;
+
+	@Autowired private CustomerService customerService;
+	@Autowired private RoomService roomService;
 
 	private List<Reservation> toList(Iterable<ReservationImpl> iterable) {
 		List<Reservation> reservations = new ArrayList<>();
@@ -49,7 +54,16 @@ public class ReservationServiceImpl implements ReservationService {
 	@Transactional(readOnly = false)
 	public Reservation save(Reservation reservation) {
 		if(reservation instanceof ReservationImpl) {
-			return reservationRepository.save((ReservationImpl) reservation);
+			Reservation savedReservation = reservationRepository.save((ReservationImpl) reservation);
+			Customer customer = savedReservation.getCustomer();
+			Room room = savedReservation.getRoom();
+
+			customer.addReservation(savedReservation);
+			room.addReservation(savedReservation);
+
+			customerService.save(customer);
+			roomService.save(room);
+			return savedReservation;
 		} else {
 			throw generateIllegalArgumentException("error.reservationimpl.type");
 		}
@@ -59,6 +73,14 @@ public class ReservationServiceImpl implements ReservationService {
 	@Transactional(readOnly = false)
 	public void delete(Reservation reservation) {
 		if(reservation instanceof ReservationImpl) {
+			Customer customer = reservation.getCustomer();
+			Room room = reservation.getRoom();
+
+			customer.removeReservation(reservation);
+			room.removeReservation(reservation);
+
+			customerService.save(customer);
+			roomService.save(room);
 			reservationRepository.delete((ReservationImpl) reservation);
 		} else {
 			throw generateIllegalArgumentException("error.reservationimpl.type");
