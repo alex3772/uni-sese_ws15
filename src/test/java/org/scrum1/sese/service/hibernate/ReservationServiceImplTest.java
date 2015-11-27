@@ -1,9 +1,6 @@
 package org.scrum1.sese.service.hibernate;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -37,13 +34,12 @@ public class ReservationServiceImplTest {
 	@Autowired private CustomerService customerService;
 	@Autowired private RoomService roomService;
 
-	private static Customer customer1;
-	private static Customer customer2;
-	private static Customer customer3;
+	private Customer customer1;
+	private Customer customer2;
+	private Customer customer3;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		initCustomers();
 	}
 
 	@AfterClass
@@ -52,47 +48,114 @@ public class ReservationServiceImplTest {
 
 	@Before
 	public void setUp() throws Exception {
+		initCustomers();
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
 
-	private static void initCustomers() {
+	private void initCustomers() {
 		customer1 = new CustomerImpl("Gerhard", "Berger", "", Gender.MALE, "gberger", "Berger Str.", "Berg", "2525");
 		customer2 = new CustomerImpl("Gerda", "Schmidt", "", Gender.FEMALE, "gschmidt", "Schmidtstrasse", "Schmida", "6528");
 		customer3 = new CustomerImpl("Hans", "Haas", "", Gender.MALE, "hhaas", "Hasengasse", "Wien", "1100");
 	}
 
+	private void saveCustomers() {
+		customer1 = customerService.save(customer1);
+		customer2 = customerService.save(customer2);
+		customer3 = customerService.save(customer3);
+	}
+
+	private Room getRoom(String name) {
+		List<Room> rooms = roomService.findAll();
+		assertFalse(rooms.isEmpty());
+		for(Room room : rooms) {
+			if(room.getName().equals(name)) {
+				return room;
+			}
+		}
+		return null;
+	}
+
 	@Test
 	@Transactional
 	public void testSaveReservations() {
-		List<Room> rooms = roomService.findAll();
-		assertNotNull(rooms);
-		assertFalse(rooms.isEmpty());
+		saveCustomers();
 
-		Room room101 = rooms.get(0);
+		Room room101 = getRoom("101");
 		assertNotNull(room101);
-		assertEquals("101", room101.getName());
-
-		Customer savedCustomer1 = customerService.save(customer1);
-		assertTrue(savedCustomer1 instanceof CustomerImpl);
-		assertTrue(((CustomerImpl) savedCustomer1).isPersisted());
+		assertTrue(room101.getReservations().isEmpty());
 
 		LocalDate checkin = LocalDate.now();
 		LocalDate checkout = LocalDate.now().plusDays(1);
-		Reservation reservation1 = new ReservationImpl(savedCustomer1, room101, checkin, checkout, savedCustomer1.getDiscount(), room101.getPriceSR());
+		Reservation reservation1 = new ReservationImpl(customer1, room101, checkin, checkout, customer1.getDiscount(), room101.getPriceSR());
 
 		Reservation savedReservation = reservationService.save(reservation1);
 		assertTrue(savedReservation instanceof ReservationImpl);
 		assertTrue(((ReservationImpl) savedReservation).isPersisted());
 
-//		assertFalse(savedReservation.getCustomer().getReservations().isEmpty());
+		Customer reservationCustomer = savedReservation.getCustomer();
+		assertEquals(customer1, reservationCustomer);
+		assertFalse(reservationCustomer.getReservations().isEmpty());
+		assertEquals(1, reservationCustomer.getReservations().size());
+		assertEquals(savedReservation, reservationCustomer.getReservations().get(0));
 
-		List<Customer> customers = customerService.findAll();
-		Customer reloadedCustomer = customers.get(0);
-		assertEquals(customer1.getName(), reloadedCustomer.getName());
-		assertFalse(reloadedCustomer.getReservations().isEmpty());
+		Room reservationRoom = savedReservation.getRoom();
+		assertNotNull(reservationRoom);
+		assertTrue(reservationRoom.equals(room101));
+		assertFalse(reservationRoom.getReservations().isEmpty());
+		assertEquals(1, reservationRoom.getReservations().size());
+		assertEquals(savedReservation, reservationRoom.getReservations().get(0));
+	}
+
+	@Test
+	@Transactional
+	public void testRemoveReservation() {
+		saveCustomers();
+
+		Room room101 = getRoom("101");
+		assertNotNull(room101);
+		assertTrue(room101.getReservations().isEmpty());
+
+		LocalDate checkin = LocalDate.now();
+		LocalDate checkout = LocalDate.now().plusDays(1);
+		Reservation reservation1 = new ReservationImpl(customer1, room101, checkin, checkout, customer1.getDiscount(), room101.getPriceSR());
+
+		Reservation savedReservation = reservationService.save(reservation1);
+		reservationService.delete(savedReservation);
+
+		Reservation reloadedReservation = reservationService.reload(savedReservation);
+		assertNull(reloadedReservation);
+
+		// TODO reloading room and customer and test if reservation exists.
+	}
+
+	@Test
+	@Transactional
+	public void testSearchReservation() {
+		saveCustomers();
+
+		LocalDate checkin = LocalDate.of(2015, 11, 25);
+		LocalDate checkout = LocalDate.of(2015, 11, 27);
+		Room room = getRoom("101");
+
+		Reservation reservation1 = new ReservationImpl(customer1, room, checkin, checkout, customer1.getDiscount(), room.getPriceSR());
+		reservationService.save(reservation1);
+
+		room = getRoom("102");
+		Reservation reservation2 = new ReservationImpl(customer1, room, checkin, checkout, customer1.getDiscount(), room.getPriceSR());
+		reservationService.save(reservation2);
+
+		room = getRoom("103");
+		Reservation reservation3 = new ReservationImpl(customer2, room, checkin.plusDays(2), checkout.plusDays(2), customer2.getDiscount(), room.getPriceSR());
+		reservationService.save(reservation3);
+
+		List<Reservation> reservations = reservationService.findAll(customer1, getRoom("101"), null, null);
+		assertFalse(reservations.isEmpty());
+		assertEquals(1, reservations.size());
+
+		assertEquals(2, reservationService.findAll(customer1).size());
 	}
 
 }
