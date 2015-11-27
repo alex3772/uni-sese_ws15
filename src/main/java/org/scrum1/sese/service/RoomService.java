@@ -6,6 +6,8 @@ import org.scrum1.sese.dbo.Room;
 
 public interface RoomService {
 
+	public Room save(Room room);
+
 	public List<Room> findAll();
 
 }
