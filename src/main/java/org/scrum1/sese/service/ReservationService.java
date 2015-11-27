@@ -13,6 +13,8 @@ public interface ReservationService {
 
 	public void delete(Reservation reservation);
 
+	public Reservation reload(Reservation reservation);
+
 	public List<Reservation> findAll();
 
 	public List<Reservation> findAll(Customer customer);

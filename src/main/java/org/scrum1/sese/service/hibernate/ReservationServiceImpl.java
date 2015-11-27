@@ -89,6 +89,17 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Override
 	@Transactional(readOnly = true)
+	public Reservation reload(Reservation reservation) {
+		if(reservation instanceof ReservationImpl) {
+			Long id = ((ReservationImpl) reservation).getId();
+			return reservationRepository.findOne(id);
+		} else {
+			throw generateIllegalArgumentException("error.reservationimpl.type");
+		}
+	}
+
+	@Override
+	@Transactional(readOnly = true)
 	public List<Reservation> findAll() {
 		return toList(reservationRepository.findAll());
 	}
