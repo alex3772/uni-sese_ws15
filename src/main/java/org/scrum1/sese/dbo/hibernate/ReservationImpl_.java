@@ -1,4 +1,4 @@
-package org.scrum1.sese.dbo.hibernate.metamodel;
+package org.scrum1.sese.dbo.hibernate;
 
 import java.time.LocalDate;
 
@@ -8,12 +8,10 @@ import javax.persistence.metamodel.StaticMetamodel;
 import org.scrum1.sese.dbo.Customer;
 import org.scrum1.sese.dbo.Invoice;
 import org.scrum1.sese.dbo.Room;
-import org.scrum1.sese.dbo.hibernate.ReservationImpl;
 
 @StaticMetamodel(ReservationImpl.class)
-public class ReservationModel {
+public class ReservationImpl_ extends AbstractDatabaseObjectID_ {
 
-	public static volatile SingularAttribute<ReservationImpl, Long> id;
 	public static volatile SingularAttribute<ReservationImpl, Customer> customer;
 	public static volatile SingularAttribute<ReservationImpl, Room> room;
 	public static volatile SingularAttribute<ReservationImpl, LocalDate> checkin;
