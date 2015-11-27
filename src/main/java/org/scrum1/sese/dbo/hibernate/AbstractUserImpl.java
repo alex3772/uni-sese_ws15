@@ -27,7 +27,7 @@ public abstract class AbstractUserImpl extends AbstractDatabaseObjectID implemen
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 
-	@Column(name = "username", length = 10, nullable = false, unique = true)
+	@Column(name = "username", length = 50, nullable = false, unique = true)
 	private String username;
 
 	@Column(name = "password", length = 64, nullable = false)
@@ -40,7 +40,7 @@ public abstract class AbstractUserImpl extends AbstractDatabaseObjectID implemen
 	@Column(name = "phone", length = 30, nullable = true)
 	private String phone;
 
-	@Column(name = "email", length = 30, nullable = true)
+	@Column(name = "email", length = 255, nullable = true)
 	private String email;
 
 	@Column(name = "street", length = 255, nullable = false)

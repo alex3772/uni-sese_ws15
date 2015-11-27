@@ -7,8 +7,7 @@ import org.scrum1.sese.view.forms.RegisterForm;
 public class RegisterPage extends BasePage {
 	
 	public RegisterPage(CustomerImpl customer) {
-		this.add(new RegisterForm("register_form", customer));
-		
+		this.add(new RegisterForm("register_form", customer));		
 	}
 
 }

@@ -9,10 +9,15 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.hibernate.annotations.Immutable;
 import org.scrum1.sese.dbo.Customer;
 import org.scrum1.sese.dbo.Reservation;
 import org.scrum1.sese.dbo.Room;
+import org.scrum1.sese.dbo.hibernate.RoomImpl;
 import org.scrum1.sese.service.ReservationService;
+import org.scrum1.sese.service.hibernate.RoomServiceImpl;
+import org.springframework.data.annotation.Persistent;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.servlet.View;
 
 import javassist.SerialVersionUID;

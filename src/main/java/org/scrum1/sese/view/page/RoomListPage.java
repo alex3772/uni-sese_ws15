@@ -20,12 +20,7 @@ public class RoomListPage extends BasePage {
 	private RoomService roomService;
 
 	public RoomListPage(final PageParameters params) {
-
-		if (!params.get("username").isEmpty()) {
-			System.out.println("Contains username " + params.get("username"));
-		} else {
-			System.out.println("No username set");
-		}
+		this.add(getRoomListView(getRoomListModel()));
 	}
 
 	public RoomListPage() {

@@ -7,10 +7,19 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.scrum1.sese.WicketWebApplication;
+import org.scrum1.sese.dbo.Customer;
+import org.scrum1.sese.dbo.Gender;
 import org.scrum1.sese.dbo.hibernate.CustomerImpl;
+import org.scrum1.sese.service.CustomerService;
+import org.scrum1.sese.view.page.MainPage;
+import org.scrum1.sese.view.page.RoomListPage;
 
 public class RegisterForm extends Form{
+	
+	@SpringBean
+	CustomerService customerService;
 
 	public RegisterForm(String id, CustomerImpl customer) {
 		super(id);
@@ -36,10 +45,14 @@ public class RegisterForm extends Form{
 	protected void onSubmit() {
 		CustomerImpl customer = (CustomerImpl) this.getModelObject();
 		WicketWebApplication app = (WicketWebApplication) this.getApplication();
+		customer.setGender(Gender.FEMALE); // Add select to register Form template
 		
-		System.out.println("Submitting Register Form");
-		PageParameters param = new PageParameters();
-		param.add("customer", customer);
+		saveCustomer(customer);
+		getRequestCycle().setResponsePage(MainPage.class);
+	}
+	
+	private void saveCustomer(Customer customer){
+		customerService.save((CustomerImpl)customer);
 	}
 
 }
