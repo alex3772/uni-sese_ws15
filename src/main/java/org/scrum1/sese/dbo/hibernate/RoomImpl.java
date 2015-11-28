@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -45,10 +46,10 @@ public class RoomImpl extends AbstractDatabaseObjectID implements Room {
 	@Column(name = "price_dr_one_child", nullable = true)
 	private Double priceDROneChild;
 
-	@OneToMany(mappedBy = "room", targetEntity = ReservationImpl.class)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "room", targetEntity = ReservationImpl.class)
 	private List<Reservation> reservations;
 
-	@OneToMany(mappedBy = "room", targetEntity = DefectImpl.class)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "room", targetEntity = DefectImpl.class)
 	private List<Defect> defects;
 
 	public RoomImpl() {

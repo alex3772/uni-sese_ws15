@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -36,7 +37,7 @@ public class CustomerImpl extends AbstractUserImpl implements Customer {
 	@Column(name = "discount", nullable = true)
 	private Integer discount;
 
-	@OneToMany(mappedBy = "customer", targetEntity = ReservationImpl.class)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", targetEntity = ReservationImpl.class)
 	private List<Reservation> reservations;
 
 	public CustomerImpl() {

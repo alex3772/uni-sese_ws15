@@ -7,7 +7,6 @@ import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -25,11 +24,11 @@ public class ReservationImpl extends AbstractDatabaseObjectID implements Reserva
 
 	private static final long serialVersionUID = -626427961912829509L;
 
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = CustomerImpl.class)
+	@ManyToOne(targetEntity = CustomerImpl.class)
 	@JoinColumn(name = "customer_id", nullable = false)
 	private Customer customer;
 
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = RoomImpl.class)
+	@ManyToOne(targetEntity = RoomImpl.class)
 	@JoinColumn(name = "room_id", nullable = false)
 	private Room room;
 
@@ -47,7 +46,7 @@ public class ReservationImpl extends AbstractDatabaseObjectID implements Reserva
 	@Column(name = "price", nullable = false)
 	private Double price;
 
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = InvoiceImpl.class)
+	@ManyToOne(targetEntity = InvoiceImpl.class)
 	@JoinColumn(name = "invoice_id", nullable = true)
 	private Invoice invoice;
 

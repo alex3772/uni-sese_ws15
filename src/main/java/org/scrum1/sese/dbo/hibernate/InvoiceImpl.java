@@ -9,6 +9,7 @@ import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,7 +28,7 @@ public class InvoiceImpl extends AbstractDatabaseObjectID implements Invoice {
 	@Convert(converter = LocalDatePersistenceConverter.class)
 	private LocalDate invoiceDate;
 
-	@OneToMany(mappedBy = "invoice", targetEntity = ReservationImpl.class)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "invoice", targetEntity = ReservationImpl.class)
 	private List<Reservation> reservations;
 
 	@Override

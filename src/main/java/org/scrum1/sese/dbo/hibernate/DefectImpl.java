@@ -6,7 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -22,7 +21,7 @@ public class DefectImpl extends AbstractDatabaseObjectID implements Defect {
 
 	private static final long serialVersionUID = -4267174319079783055L;
 
-	@ManyToOne(fetch=FetchType.LAZY, targetEntity = RoomImpl.class)
+	@ManyToOne(targetEntity = RoomImpl.class)
 	@JoinColumn(name="room_id", nullable = false)
 	private Room room;
 

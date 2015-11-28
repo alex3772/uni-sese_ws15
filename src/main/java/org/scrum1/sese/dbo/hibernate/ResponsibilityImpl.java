@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,7 +27,7 @@ public class ResponsibilityImpl extends AbstractDatabaseObjectID implements Resp
 	@Column(name = "description", length = 255, nullable = true)
 	private String description;
 
-	@OneToMany(mappedBy = "responsibility", targetEntity = EmployeeImpl.class)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "responsibility", targetEntity = EmployeeImpl.class)
 	private List<Employee> employees;
 
 	@Override
