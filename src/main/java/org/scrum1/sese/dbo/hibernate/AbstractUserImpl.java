@@ -27,12 +27,6 @@ public abstract class AbstractUserImpl extends AbstractDatabaseObjectID implemen
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 
-	@Column(name = "username", length = 50, nullable = false, unique = true)
-	private String username;
-
-	@Column(name = "password", length = 64, nullable = false)
-	private String password;
-
 	@Column(name = "birthdate", nullable = true)
 	@Convert(converter = LocalDatePersistenceConverter.class)
 	private LocalDate birthDate;
@@ -55,13 +49,11 @@ public abstract class AbstractUserImpl extends AbstractDatabaseObjectID implemen
 	public AbstractUserImpl() {
 	}
 
-	public AbstractUserImpl(String name, String surname, String password,
-			Gender gender, String username, String street, String city, String zipCode) {
+	public AbstractUserImpl(String name, String surname, Gender gender,
+			String street, String city, String zipCode) {
 		this.name = name;
 		this.surname = surname;
-		this.password = password;
 		this.gender = gender;
-		this.username = username;
 		this.street = street;
 		this.city = city;
 		this.zipCode = zipCode;
@@ -95,26 +87,6 @@ public abstract class AbstractUserImpl extends AbstractDatabaseObjectID implemen
 	@Override
 	public void setGender(Gender gender) {
 		this.gender = gender;
-	}
-
-	@Override
-	public String getUsername() {
-		return this.username;
-	}
-
-	@Override
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	@Override
-	public String getPassword() {
-		return password;
-	}
-
-	@Override
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	@Override

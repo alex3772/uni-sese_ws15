@@ -22,6 +22,12 @@ public class CustomerImpl extends AbstractUserImpl implements Customer {
 
 	private static final long serialVersionUID = -2597185688650139233L;
 
+	@Column(name = "username", length = 50, nullable = true, unique = true)
+	private String username;
+
+	@Column(name = "password", length = 64, nullable = true)
+	private String password;
+
 	@Column(name = "companyname", length = 100, nullable = true)
 	private String companyName;
 
@@ -46,7 +52,27 @@ public class CustomerImpl extends AbstractUserImpl implements Customer {
 
 	public CustomerImpl(String name, String surname, String password, Gender gender,
 			String username, String steet, String city,	String zipCode) {
-		super(name, surname, password, gender, username, steet, city, zipCode);
+		super(name, surname, gender, steet, city, zipCode);
+	}
+
+	@Override
+	public String getUsername() {
+		return this.username;
+	}
+
+	@Override
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	@Override
+	public String getPassword() {
+		return password;
+	}
+
+	@Override
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override

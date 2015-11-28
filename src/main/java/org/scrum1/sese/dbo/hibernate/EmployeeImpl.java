@@ -20,6 +20,12 @@ public class EmployeeImpl extends AbstractUserImpl implements Employee {
 
 	private static final long serialVersionUID = 4741757161073228152L;
 
+	@Column(name = "username", length = 50, nullable = false, unique = true)
+	private String username;
+
+	@Column(name = "password", length = 64, nullable = false)
+	private String password;
+
 	@ManyToOne(targetEntity = RoleImpl.class)
 	@JoinColumn(name = "role_id", nullable = false)
 	private Role role;
@@ -40,9 +46,31 @@ public class EmployeeImpl extends AbstractUserImpl implements Employee {
 
 	public EmployeeImpl(String name, String surname, String password, Gender gender,
 			String username, String steet, String city,	String zipCode, Role role, String socialSecurityNumber) {
-		super(name, surname, password, gender, username, steet, city, zipCode);
+		super(name, surname, gender, steet, city, zipCode);
+		this.username = username;
+		this.password = password;
 		this.role = role;
 		this.socialSecurityNumber = socialSecurityNumber;
+	}
+
+	@Override
+	public String getUsername() {
+		return this.username;
+	}
+
+	@Override
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	@Override
+	public String getPassword() {
+		return password;
+	}
+
+	@Override
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
