@@ -25,6 +25,7 @@ public class MainPage extends BasePage {
 		this.add(roomsListLink);
 	}
 	
+	
 	@Override
 	public void renderHead(IHeaderResponse response) {
 		// TODO Auto-generated method stub

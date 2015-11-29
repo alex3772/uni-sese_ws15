@@ -9,5 +9,7 @@ public interface CustomerService {
 	public Customer save(Customer customer);
 
 	public List<Customer> findAll();
+	
+	public boolean authenticate(String username, String password);
 
 }

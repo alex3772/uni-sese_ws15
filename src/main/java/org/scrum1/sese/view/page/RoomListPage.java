@@ -19,14 +19,20 @@ public class RoomListPage extends BasePage {
 
 	@SpringBean
 	private RoomService roomService;
+	
+	private RoomSearchForm roomSearchForm;
 
 	public RoomListPage(final PageParameters params) {
 		String searchParam = params.get("searchText").toString();
 		String searchType = params.get("searchType").toString();
 		System.out.println("Search type " + searchType);
-		
 		this.add(getRoomListView(getRoomListModel(searchType, searchParam)));
-		this.add(new RoomSearchForm("search_form"));
+		try {
+			this.add(new RoomSearchForm("search_form"));
+		} catch(Exception e){
+			System.out.println("Already have a searchform");
+		}
+		
 	}
 
 	public RoomListPage() {

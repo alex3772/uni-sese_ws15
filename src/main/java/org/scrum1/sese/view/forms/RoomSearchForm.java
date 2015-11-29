@@ -17,10 +17,10 @@ public class RoomSearchForm extends Form{
 	public RoomSearchForm(String id) {
 		super(id);
 		
-		Select searchType = new Select("searchType", new PropertyModel<>(this, "searchType"));
-		this.add(searchType);
-		searchType.add(new SelectOption("room", new Model<String>("room")));
-		searchType.add(new SelectOption("maxPerson", new Model<String>("maxPerson")));
+		Select searchTypeSelect = new Select("searchType", new PropertyModel<>(this, "searchType"));
+		this.add(searchTypeSelect);
+		searchTypeSelect.add(new SelectOption("room", new Model<String>("room")));
+		searchTypeSelect.add(new SelectOption("maxPerson", new Model<String>("maxPerson")));
 
 		final TextField<String> searchText = new TextField<>("searchText", new PropertyModel<String>(this, "searchText"));
 		this.add(searchText);
@@ -29,11 +29,11 @@ public class RoomSearchForm extends Form{
 	@Override
 	protected void onSubmit() {
 		super.onSubmit();
-		System.out.println("Search for room " + this.searchText);
-		// TODO: call findAll with searchParam
+
 		PageParameters param = new PageParameters();
 		param.add("searchText", this.searchText);
 		param.add("searchType", this.searchType);
+		this.clearInput();
 		getRequestCycle().setResponsePage(RoomListPage.class, param);
 	}
 }

@@ -4,7 +4,7 @@ insert into role (role_key, name) values ('customer', 'Customer');
 
 -- employees
 insert into employee (name, surname, gender, username, password, street, city, zipcode, role_id, social_security_number)
-	values ('Max', 'Mustermann', 'MALE', 'max', '9baf3a40312f39849f46dad1040f2f039f1cffa1238c41e9db675315cfad39b6', 'Teststrasse 1',
+	values ('Admin', 'Admin', 'MALE', 'admin', 'admin', 'Teststrasse 1',
 		'Wien', '1010', (select id from role where role_key = 'admin'), '12345');
 
 -- customer

@@ -1,5 +1,6 @@
 package org.scrum1.sese.view.page;
 
+import org.apache.wicket.Session;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.model.IModel;
 import org.scrum1.sese.view.page.panels.NavigationPanel;

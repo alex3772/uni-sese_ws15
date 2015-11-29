@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.wicket.protocol.http.WebSession;
+import org.scrum1.sese.WicketWebApplication;
 import org.scrum1.sese.dbo.Customer;
+import org.scrum1.sese.dbo.User;
 import org.scrum1.sese.dbo.hibernate.CustomerImpl;
 import org.scrum1.sese.repository.CustomerRepository;
 import org.scrum1.sese.service.CustomerService;
@@ -52,6 +55,18 @@ public class CustomerServiceImpl implements CustomerService {
 	@Transactional(readOnly = true)
 	public List<Customer> findAll() {
 		return toList(customerRepository.findAll());
+	}
+	
+	@Override
+	public boolean authenticate(String username, String password) {
+		Customer ret = customerRepository.findByUsername(username);
+		if (ret != null && ret.getPassword().equals(password)) {
+			WebSession session = WebSession.get();
+			session.setAttribute("username", username);
+			session.setAttribute("role", "customer");
+			return true;
+		}
+		return false;
 	}
 
 }
