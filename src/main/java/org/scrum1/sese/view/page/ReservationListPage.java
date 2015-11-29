@@ -16,6 +16,8 @@ import org.scrum1.sese.dbo.Room;
 import org.scrum1.sese.dbo.hibernate.RoomImpl;
 import org.scrum1.sese.service.ReservationService;
 import org.scrum1.sese.service.hibernate.RoomServiceImpl;
+import org.scrum1.sese.view.forms.RegisterForm;
+import org.scrum1.sese.view.forms.ReservationSearchForm;
 import org.springframework.data.annotation.Persistent;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.servlet.View;
@@ -29,6 +31,7 @@ public class ReservationListPage extends BasePage{
 	
 	public ReservationListPage() {
 		this.add(getReservationListView(getReservationListModel()));
+		this.add(new ReservationSearchForm("search_form"));	
 	}
 
 	private ListView<Reservation> getReservationListView(IModel<List<Reservation>> reservationListModel) {
