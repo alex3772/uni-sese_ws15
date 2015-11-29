@@ -10,6 +10,19 @@
 	
 		<div wicket:id="mainNav">
     	</div>
+    	
+    	<div class="container">
+			<form wicket:id="search_form" class="form-inline">
+				<div class="input-group">
+					<input wicket:id="searchText" type="text" required autofocus placeholder="Suchtext"  class="form-control"/>
+					<span class="input-group-btn">
+						<button value="Login" name="login" type="submit" class="btn pull-right">
+							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+						</button>
+					</span>
+				</div>
+			</form>			
+		</div>
 	
 		<div class="container">
 			<div class="page-header">

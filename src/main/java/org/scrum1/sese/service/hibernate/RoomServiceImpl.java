@@ -53,5 +53,11 @@ public class RoomServiceImpl implements RoomService {
 	public List<Room> findAll() {
 		return toList(roomRepository.findAll());
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Room> findAll(String name) {
+		return toList(roomRepository.findByName(name));
+	}
 
 }
