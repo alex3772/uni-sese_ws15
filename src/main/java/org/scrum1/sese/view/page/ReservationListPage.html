@@ -8,10 +8,23 @@
 	<body>
 		<div wicket:id="mainNav"></div>
 		
-		<div>
-			<form wicket:id="search_form">
-				<input wicket:id="searchText" type="text" required autofocus id="loginUsername" placeholder="Benutzername"  class="form-control"/>
-				<input value="Login" name="login" type="submit" class="btn pull-right"/>
+		<div class="container">
+			<form wicket:id="search_form" class="form-inline">
+				<div class="form-group">
+					<label>Suche nach:</label>
+					<select wicket:id="searchType" class="form-control">
+						<option wicket:id="room">Zimmer</option>
+						<option wicket:id="customer">Kunde</option>
+					</select>
+				</div>
+				<div class="input-group">
+					<input wicket:id="searchText" type="text" required autofocus placeholder="Suchtext"  class="form-control"/>
+					<span class="input-group-btn">
+						<button value="Login" name="login" type="submit" class="btn pull-right">
+							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+						</button>
+					</span>
+				</div>
 			</form>			
 		</div>
 	

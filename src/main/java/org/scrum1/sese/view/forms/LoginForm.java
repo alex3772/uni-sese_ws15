@@ -28,10 +28,14 @@ public class LoginForm extends Form {
 		CustomerImpl customer = (CustomerImpl) this.getModelObject();
 		WicketWebApplication app = (WicketWebApplication) this.getApplication();
 		// Check credentials
-		System.out.println("Checking credentials " + customer.getUsername() + " " + customer.getPassword());
-		PageParameters param = new PageParameters();
-		param.add("username", customer.getUsername());
-		getRequestCycle().setResponsePage(RoomListPage.class, param);
+		authenticate(customer.getUsername(), customer.getPassword());
+		//PageParameters param = new PageParameters();
+		//param.add("username", customer.getUsername());
+		getRequestCycle().setResponsePage(RoomListPage.class);
+	}
+
+	private void authenticate(String username, String password) {
+		System.out.println("Authenticating user " + username + " with password " + password);
 	}
 
 }

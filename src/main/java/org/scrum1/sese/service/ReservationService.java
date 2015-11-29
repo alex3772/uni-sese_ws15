@@ -30,5 +30,7 @@ public interface ReservationService {
 	public List<Reservation> findAll(LocalDate checkin, LocalDate checkout);
 
 	public List<Reservation> findAll(Customer customer, Room room, LocalDate checkin, LocalDate checkout);
+	
+	//public List<Reservation> findByCustomer(String customerName);
 
 }

@@ -11,6 +11,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.scrum1.sese.dbo.Room;
 import org.scrum1.sese.service.RoomService;
+import org.scrum1.sese.view.forms.RoomSearchForm;
 
 public class RoomListPage extends BasePage {
 
@@ -20,11 +21,17 @@ public class RoomListPage extends BasePage {
 	private RoomService roomService;
 
 	public RoomListPage(final PageParameters params) {
-		this.add(getRoomListView(getRoomListModel()));
+		String searchParam = params.get("searchText").toString();
+		String searchType = params.get("searchType").toString();
+		System.out.println("Search type " + searchType);
+		
+		this.add(getRoomListView(getRoomListModel(searchType, searchParam)));
+		this.add(new RoomSearchForm("search_form"));
 	}
 
 	public RoomListPage() {
 		this.add(getRoomListView(getRoomListModel()));
+		this.add(new RoomSearchForm("search_form"));
 	}
 
 	private ListView<Room> getRoomListView(IModel<List<Room>> roomListModel) {
@@ -49,6 +56,18 @@ public class RoomListPage extends BasePage {
 			@Override
 			protected List<Room> load() {
 				return roomService.findAll();
+			}
+		};
+	}
+	
+	private IModel<List<Room>> getRoomListModel(String searchType, String searchText) {
+		return new LoadableDetachableModel<List<Room>>() {
+
+			private static final long serialVersionUID = -1830981661911150014L;
+
+			@Override
+			protected List<Room> load() {
+				return roomService.findAll(searchType, searchText);
 			}
 		};
 	}
