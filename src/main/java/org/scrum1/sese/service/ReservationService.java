@@ -15,11 +15,17 @@ public interface ReservationService {
 
 	public Reservation reload(Reservation reservation);
 
+	public List<Reservation> findByCustomerName(String customerName);
+
+	public List<Reservation> findByRoomName(String roomName);
+
 	public List<Reservation> findAll();
 
 	public List<Reservation> findAll(Customer customer);
 
 	public List<Reservation> findAll(Room room);
+
+	public List<Reservation> findAll(String customerName, String roomName);
 
 	public List<Reservation> findAll(LocalDate checkin, LocalDate checkout);
 

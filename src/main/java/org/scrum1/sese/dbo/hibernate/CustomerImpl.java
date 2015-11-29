@@ -22,7 +22,7 @@ public class CustomerImpl extends AbstractUserImpl implements Customer {
 
 	private static final long serialVersionUID = -2597185688650139233L;
 
-	@Column(name = "username", length = 50, nullable = true, unique = true)
+	@Column(name = "username", length = 50, nullable = true)
 	private String username;
 
 	@Column(name = "password", length = 64, nullable = true)

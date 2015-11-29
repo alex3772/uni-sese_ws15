@@ -156,6 +156,15 @@ public class ReservationServiceImplTest {
 		assertEquals(1, reservations.size());
 
 		assertEquals(2, reservationService.findAll(customer1).size());
+
+		reservations = reservationService.findByRoomName("101");
+		assertFalse(reservations.isEmpty());
+
+		reservations = reservationService.findByCustomerName("erger");
+		assertFalse(reservations.isEmpty());
+
+		reservations = reservationService.findAll("erg", "101");
+		assertFalse(reservations.isEmpty());
 	}
 
 }
