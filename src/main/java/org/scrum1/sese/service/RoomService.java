@@ -10,6 +10,6 @@ public interface RoomService {
 
 	public List<Room> findAll();
 
-	public List<Room> findAll(String name);
+	public List<Room> findAll(String type, String name);
 
 }

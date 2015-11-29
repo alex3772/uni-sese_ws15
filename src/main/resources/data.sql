@@ -18,9 +18,12 @@ insert into room (name, maxpersons, price_sr)
 
 insert into room (name, maxpersons, price_sr, price_dr, price_sr_one_child)
 	values ('102', 2, 21.50, 29.90, 25.90);
+	
+insert into room (name, maxpersons, price_sr, price_dr, price_sr_one_child)
+	values ('103', 2, 21.50, 29.90, 25.90);
 
 insert into room (name, maxpersons, price_sr, price_dr, price_tr, price_sr_one_child, price_sr_two_children)
-	values ('103', 3, 21.90, 30.50, 36.20, 25.60, 27.30);
+	values ('104', 3, 21.90, 30.50, 36.20, 25.60, 27.30);
 
 --insert into room (name, maxpersons, price_sr, price_dr, price_tr, price_sr_one_child, price_sr_two_children, price_dr_one_child)
 --	values ();

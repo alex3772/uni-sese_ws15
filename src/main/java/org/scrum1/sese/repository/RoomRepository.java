@@ -13,4 +13,6 @@ public interface RoomRepository extends CrudRepository<RoomImpl, Long> {
 	
 	public List<RoomImpl> findByName(String room);
 
+	public Iterable<RoomImpl> findByMaxPersons(int parseInt);
+
 }

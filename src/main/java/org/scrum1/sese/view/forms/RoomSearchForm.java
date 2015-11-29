@@ -12,10 +12,16 @@ import org.scrum1.sese.view.page.RoomListPage;
 public class RoomSearchForm extends Form{
 
 	private String searchText;
+	private String searchType;
 
 	public RoomSearchForm(String id) {
 		super(id);
 		
+		Select searchType = new Select("searchType", new PropertyModel<>(this, "searchType"));
+		this.add(searchType);
+		searchType.add(new SelectOption("room", new Model<String>("room")));
+		searchType.add(new SelectOption("maxPerson", new Model<String>("maxPerson")));
+
 		final TextField<String> searchText = new TextField<>("searchText", new PropertyModel<String>(this, "searchText"));
 		this.add(searchText);
 	}
@@ -27,6 +33,7 @@ public class RoomSearchForm extends Form{
 		// TODO: call findAll with searchParam
 		PageParameters param = new PageParameters();
 		param.add("searchText", this.searchText);
+		param.add("searchType", this.searchType);
 		getRequestCycle().setResponsePage(RoomListPage.class, param);
 	}
 }

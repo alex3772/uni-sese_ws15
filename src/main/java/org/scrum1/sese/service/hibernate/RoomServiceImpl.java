@@ -56,8 +56,13 @@ public class RoomServiceImpl implements RoomService {
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<Room> findAll(String name) {
-		return toList(roomRepository.findByName(name));
+	public List<Room> findAll(String type, String name) {
+		if (type.equals("room")) {
+			return toList(roomRepository.findByName(name));
+		} else {
+			return toList(roomRepository.findByMaxPersons(Integer.parseInt(name)));
+		}
+		
 	}
 
 }

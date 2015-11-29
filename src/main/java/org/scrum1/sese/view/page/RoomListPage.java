@@ -22,8 +22,10 @@ public class RoomListPage extends BasePage {
 
 	public RoomListPage(final PageParameters params) {
 		String searchParam = params.get("searchText").toString();
-		System.out.println("Roomlist page with param " + searchParam);
-		this.add(getRoomListView(getRoomListModel(searchParam)));
+		String searchType = params.get("searchType").toString();
+		System.out.println("Search type " + searchType);
+		
+		this.add(getRoomListView(getRoomListModel(searchType, searchParam)));
 		this.add(new RoomSearchForm("search_form"));
 	}
 
@@ -58,15 +60,14 @@ public class RoomListPage extends BasePage {
 		};
 	}
 	
-	private IModel<List<Room>> getRoomListModel(String searchText) {
-		System.out.println("Find all with search text" + searchText);
+	private IModel<List<Room>> getRoomListModel(String searchType, String searchText) {
 		return new LoadableDetachableModel<List<Room>>() {
 
 			private static final long serialVersionUID = -1830981661911150014L;
 
 			@Override
 			protected List<Room> load() {
-				return roomService.findAll(searchText);
+				return roomService.findAll(searchType, searchText);
 			}
 		};
 	}
